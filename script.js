@@ -42,32 +42,35 @@ const gradients = [{
 
 const generator = document.querySelector('.generator'),
     generatorButton = generator.querySelector('.generator__button'),
+    generatorButtonText = generatorButton.querySelector('span'),
     generatedText = generator.querySelector('.generator__output');
 
 const capitalizeFirstLetter = string => string.charAt(0).toUpperCase() + string.slice(1);
 
-const pickRandomFrom = items => items[Math.floor(Math.random()*items.length)];
+const pickRandomFrom = items => items[Math.floor(Math.random() * items.length)];
 
 function changeGradient() {
     const randomGradient = pickRandomFrom(gradients),
         gradientAngle = Math.round(Math.random() * 360);
 
     generator.style.background = `linear-gradient(${gradientAngle}deg, ${randomGradient.c1} 0%, ${randomGradient.c2} 100%)`;
-    generatorButton.style.background = `${randomGradient.c1}`;
+    generatorButtonText.style.backgroundImage = `linear-gradient(${360 - gradientAngle}deg, ${randomGradient.c1} 0%, ${randomGradient.c2} 100%)`;
 }
 
 function generate(e) {
     e.preventDefault();
-    const inputText = document.querySelector('.generator__input').value,
-    firstLetter = inputText.charAt(0).toLowerCase();
+    const inputText = document.querySelector('.generator__input').value;
 
-    const adjectiveList = adjectives.filter((adjective) => adjective.startsWith(`${firstLetter}`));
-    const randomAdjective = capitalizeFirstLetter(pickRandomFrom(adjectiveList));
+    if (inputText) {
+        const firstLetter = inputText.charAt(0).toLowerCase(),
+            adjectiveList = adjectives.filter(adjective => adjective.startsWith(`${firstLetter}`)),
+            randomAdjective = pickRandomFrom(adjectiveList);
 
-    generatedText.innerHTML = `${randomAdjective}${inputText}`;
-    changeGradient();
+        generatedText.innerHTML = `${capitalizeFirstLetter(randomAdjective)}${capitalizeFirstLetter(inputText)}`;
+        changeGradient();
+    } else
+        generatedText.innerHTML = "Enter a name, dumbass.";
 }
 
 generatorButton.addEventListener('click', generate);
-
-window.addEventListener('load', changeGradient)
+window.addEventListener('load', changeGradient);

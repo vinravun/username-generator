@@ -32,9 +32,16 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-bottom: 2rem;
 }
 
@@ -42,11 +49,11 @@ body {
   width: 100%;
   background-color: transparent;
   color: white;
-  border: none;
-  border-bottom: 2px solid white;
-  padding: 5px 10px;
+  border: 2px solid white;
+  border-radius: 6px;
+  padding: 8px 10px;
   font-size: 1.4rem;
-  margin-right: .5rem;
+  margin-bottom: 1rem;
   -webkit-transform: scale(0.98);
           transform: scale(0.98);
   -webkit-transition: -webkit-transform .15s ease-in;
@@ -61,15 +68,44 @@ body {
           transform: scale(1);
 }
 
+.generator__input::-webkit-input-placeholder {
+  color: #fff;
+  opacity: .6;
+}
+
+.generator__input:-ms-input-placeholder {
+  color: #fff;
+  opacity: .6;
+}
+
+.generator__input::-ms-input-placeholder {
+  color: #fff;
+  opacity: .6;
+}
+
+.generator__input::placeholder {
+  color: #fff;
+  opacity: .6;
+}
+
 .generator__button {
-  padding: 8px 10px;
+  padding: 10px 25px;
   border-radius: 20px;
   border: none;
   text-transform: uppercase;
   font-size: .8rem;
   font-weight: bold;
   color: white;
-  border: 2px solid white;
+  cursor: pointer;
+  -webkit-transition: all .3s ease-in;
+  transition: all .3s ease-in;
+}
+
+.generator__button span {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
 }
 
 .generator__button:focus {
@@ -79,5 +115,79 @@ body {
 .generator__output {
   min-height: 40px;
   font-size: 1.6rem;
+}
+
+@-webkit-keyframes hvr-wobble-horizontal {
+  16.65% {
+    -webkit-transform: translateX(8px);
+    transform: translateX(8px);
+  }
+  33.3% {
+    -webkit-transform: translateX(-6px);
+    transform: translateX(-6px);
+  }
+  49.95% {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px);
+  }
+  66.6% {
+    -webkit-transform: translateX(-2px);
+    transform: translateX(-2px);
+  }
+  83.25% {
+    -webkit-transform: translateX(1px);
+    transform: translateX(1px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes hvr-wobble-horizontal {
+  16.65% {
+    -webkit-transform: translateX(8px);
+    transform: translateX(8px);
+  }
+  33.3% {
+    -webkit-transform: translateX(-6px);
+    transform: translateX(-6px);
+  }
+  49.95% {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px);
+  }
+  66.6% {
+    -webkit-transform: translateX(-2px);
+    transform: translateX(-2px);
+  }
+  83.25% {
+    -webkit-transform: translateX(1px);
+    transform: translateX(1px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+.hvr-wobble-horizontal {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.hvr-wobble-horizontal:hover, .hvr-wobble-horizontal:focus, .hvr-wobble-horizontal:active {
+  -webkit-animation-name: hvr-wobble-horizontal;
+  animation-name: hvr-wobble-horizontal;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
 }
 /*# sourceMappingURL=style.css.map */
